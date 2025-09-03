@@ -57,7 +57,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
                     <configuration>
                         <transformers>
                             <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                <mainClass>com.example.Main</mainClass>
+                                <mainClass>sqlserver.Main</mainClass>
                             </transformer>
                         </transformers>
                     </configuration>
