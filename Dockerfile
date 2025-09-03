@@ -3,7 +3,7 @@
 FROM maven:3.8.7-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY pom.xml .
-COPY src ./src
+COPY sqlserver ./sqlserver
 # Build a single executable JAR with all dependencies
 RUN mvn clean package shade:shade
 
