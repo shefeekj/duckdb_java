@@ -1,6 +1,6 @@
 # --- Stage 1: Build the Java application ---
-# Use an official Maven image to compile and package the application
-FROM maven:3.8.7-openjdk-17 AS build
+# Use an official Maven image with a specific JDK version
+FROM maven:3.8.7-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
@@ -9,7 +9,7 @@ RUN mvn clean package shade:shade
 
 # --- Stage 2: Create the final, lightweight runtime image ---
 # Use a base OpenJDK image that's just enough to run the JAR
-FROM openjdk:17-jre-slim
+FROM eclipse-temurin:17-jre-focal
 WORKDIR /app
 # Copy the executable JAR from the build stage
 COPY --from=build /app/target/duckdb_java-1.0-SNAPSHOT.jar app.jar
